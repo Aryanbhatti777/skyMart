@@ -1,9 +1,19 @@
+import { createBrowserRouter, RouterProvider } from "react-router";
+import Login from "./Auth/pages/Login";
+import Register from "./Auth/pages/Register";
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Register />
+    }
+  ])
+
   return (
     <>
-      <h1 className="text-red-500 text-5xl font-bold">Hello</h1>
+      <RouterProvider router={router} />
     </>
   )
 }
