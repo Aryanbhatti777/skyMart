@@ -1,46 +1,63 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import AuthLayout from "./Layouts/AuthLayout";
 import { ToastContainer } from "react-toastify";
+
+import AuthLayout from "./Layouts/AuthLayout";
+import MainLayout from "./Layouts/MainLayout";
+
 import Login from "./features/Auth/pages/Login";
 import Register from "./features/Auth/pages/Register";
-import MainLayout from "./Layouts/MainLayout";
 import MainPage from "./shared/MainPage";
 
-function App() {
+import PublicProtected from "./protectedRoutes/publicProtected";
+import MainProtected from "./protectedRoutes/mainProtected";
 
+function App() {
   const router = createBrowserRouter([
+
     {
       path: "/",
-      element: <AuthLayout/>,
+      element: <PublicProtected />,
       children: [
         {
-          path: "",
-          element: <Login/>
+          element: <AuthLayout />,
+          children: [
+            {
+              index: true,
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
         },
-        {
-          path: "/register",
-          element: <Register/>
-        }
-      ]
+      ],
     },
+
+
     {
-      path: "main",
-      element: <MainLayout />,
+      path: "/main",
+      element: <MainProtected />,
       children: [
         {
-          path: "",
-          element: <MainPage/>
-        }
-      ]
-    }
-  ])
+          element: <MainLayout />,
+          children: [
+            {
+              index: true,
+              element: <MainPage />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
       <RouterProvider router={router} />
       <ToastContainer />
     </>
-  )
+  );
 }
 
 export default App;
