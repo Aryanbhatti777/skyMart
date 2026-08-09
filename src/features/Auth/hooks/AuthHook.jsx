@@ -38,7 +38,7 @@ export const useAuth = (data) => {
 
         
         toast.success("Login successfull")
-        localStorage.setItem("loggedInUser", JSON.stringify(data.email))
+        localStorage.setItem("loggedInUser", JSON.stringify(user.name))
         reset();
         dispatch(login(data.email))
         navigate("/main")
