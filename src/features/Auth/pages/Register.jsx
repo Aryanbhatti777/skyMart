@@ -1,13 +1,11 @@
-import { useNavigate } from "react-router";
+import { useAuth } from "../hooks/AuthHook";
 
 const Register = () => {
+  let { navigate, register, handleSubmit, reset, errors, registerForm } = useAuth();
 
-  const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-[#09090b] flex items-center justify-center px-4">
-
       <div className="w-full max-w-[460px]">
-
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2">
@@ -23,7 +21,6 @@ const Register = () => {
 
         {/* Register Card */}
         <div className="bg-[#111113] border border-white/10 rounded-[26px] px-7 sm:px-10 py-9">
-
           <div className="mb-8">
             <h2 className="text-3xl font-semibold text-white tracking-tight">
               Create account
@@ -34,8 +31,7 @@ const Register = () => {
             </p>
           </div>
 
-          <div className="space-y-4">
-
+          <form className="space-y-4" onSubmit={handleSubmit(registerForm)}>
             {/* Name */}
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
@@ -44,12 +40,14 @@ const Register = () => {
 
               <input
                 type="text"
+                {...register("name", { required: "Name is required" })}
                 placeholder="Full name"
                 className="w-full h-14 rounded-2xl bg-[#1b1b1e] border border-white/10
                 pl-12 pr-4 text-white placeholder:text-gray-600
                 outline-none focus:border-violet-500 transition"
               />
             </div>
+            {errors.name && <p className="text-red-500">{ errors.name.message}</p>}
 
             {/* Email */}
             <div className="relative">
@@ -60,11 +58,13 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="Email address"
+                {...register("email", { required: "Email is required" })}
                 className="w-full h-14 rounded-2xl bg-[#1b1b1e] border border-white/10
                 pl-12 pr-4 text-white placeholder:text-gray-600
                 outline-none focus:border-violet-500 transition"
               />
             </div>
+            {errors.email && <p className="text-red-500">{ errors.email.message}</p>}
 
             {/* Password */}
             <div className="relative">
@@ -75,11 +75,14 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="Password (min 6 chars)"
+                {...register("password", { required: "Password is required" })}
                 className="w-full h-14 rounded-2xl bg-[#1b1b1e] border border-white/10
                 pl-12 pr-4 text-white placeholder:text-gray-600
                 outline-none focus:border-violet-500 transition"
               />
             </div>
+            {errors.password && <p className="text-red-500">{ errors.password.message}</p>}
+            
 
             {/* Confirm Password */}
             <div className="relative">
@@ -90,11 +93,17 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="Confirm password"
+                {...register(
+                  "confirmPassword",
+                  { required: " Confirm Password is required" }
+                )}
                 className="w-full h-14 rounded-2xl bg-[#1b1b1e] border border-white/10
                 pl-12 pr-4 text-white placeholder:text-gray-600
                 outline-none focus:border-violet-500 transition"
               />
+              
             </div>
+            {errors.confirmPassword && <p className="text-red-500">{ errors.confirmPassword.message}</p>}
 
             {/* Button */}
             <button
@@ -107,19 +116,19 @@ const Register = () => {
               Create Account
               <span className="text-xl">→</span>
             </button>
-
-          </div>
+          </form>
 
           {/* Login */}
           <p className="text-center text-sm text-gray-500 mt-8">
             Already have an account?{" "}
-            <span onClick={() => navigate("/")} className="text-violet-400 font-semibold cursor-pointer hover:text-violet-300">
+            <span
+              onClick={() => navigate("/")}
+              className="text-violet-400 font-semibold cursor-pointer hover:text-violet-300"
+            >
               Sign in
             </span>
           </p>
-
         </div>
-
       </div>
     </div>
   );

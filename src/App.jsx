@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Login from "./Auth/pages/Login";
-import Register from "./Auth/pages/Register";
 import AuthLayout from "./Layouts/AuthLayout";
+import { ToastContainer } from "react-toastify";
+import Login from "./features/Auth/pages/Login";
+import Register from "./features/Auth/pages/Register";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer />
     </>
   )
 }
