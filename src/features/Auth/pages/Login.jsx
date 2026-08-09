@@ -3,11 +3,9 @@ import { useAuth } from "../hooks/AuthHook";
 
 const Login = () => {
   // const navigate = useNavigate();
-  let { navigate, register, handleSubmit, errors} = useAuth();
+  let { navigate, register, handleSubmit, reset, errors, loginForm } = useAuth();
 
-  const onSubmit = (data) => { 
-    console.log(data)
-  }
+
   return (
     <div className="min-h-screen bg-[#09090b] flex">
       {/* LEFT SIDE */}
@@ -79,7 +77,7 @@ const Login = () => {
           </div>
 
           {/* Form */}
-          <form onClick={handleSubmit(onSubmit)} className="space-y-5">
+          <form onClick={handleSubmit(loginForm)} className="space-y-5">
             {/* Email */}
             <div>
               <label className="block text-sm text-gray-400 mb-2">

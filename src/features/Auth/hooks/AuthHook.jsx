@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify";
-import { useDispatch } from "react-router"
+import { useDispatch } from "react-redux"
 import { login } from "../state/authSlice";
 
 export const useAuth = (data) => {
@@ -10,6 +10,7 @@ export const useAuth = (data) => {
     let { register, handleSubmit, reset, formState: { errors } } = useForm()
     let navigate = useNavigate()
     const arr = JSON.parse(localStorage.getItem("users")) || []
+    const dispatch = useDispatch()
     
     const registerForm = (data) => {
 
@@ -25,7 +26,24 @@ export const useAuth = (data) => {
         navigate("/")
     }
 
-    
+    const loginForm = (data) => {
 
-    return { register, handleSubmit, reset, errors, navigate, registerForm }
+        let user = arr.find((user) => user.email === data.email && user.password === data.password)
+        console.log(user)
+        
+        if (!user) {
+            toast.error("Login failed")
+            return
+        }
+
+        
+        toast.success("Login successfull")
+
+        reset();
+        dispatch(login(data.email))
+        navigate("/main")
+        
+    }
+
+    return { register, handleSubmit, reset, errors, navigate, registerForm, loginForm}
 }
