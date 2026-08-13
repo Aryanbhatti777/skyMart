@@ -2,7 +2,7 @@ import { useAllCategories, useAllProducts } from "../../hooks/productsHook";
 
 const Filter = ({ search, setSearch}) => {
     const { data, error } = useAllCategories()
-console.log(search)
+
     return (
         <div className="mx-auto w-[90%] max-w-[1520px] rounded-[22px] border border-gray-300 bg-[#fff] p-4 mb-10">
             <div className="flex items-center gap-4">
