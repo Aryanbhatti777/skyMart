@@ -6,7 +6,7 @@ console.log(search)
     return (
         <div className="mx-auto w-[90%] max-w-[1520px] rounded-[22px] border border-gray-300 bg-[#fff] p-4 mb-10">
             <div className="flex items-center gap-4">
-                {/* Search */}
+     
                 <div className="flex h-12 flex-1 items-center rounded-2xl border border-gray-800 bg-[#fff] px-4">
                     <svg
                         className="mr-4 h-5 w-5 text-gray-500"
@@ -28,7 +28,7 @@ console.log(search)
                     />
                 </div>
 
-                {/* Category */}
+        
                 <div className="relative w-48">
                     <select className="h-12 w-full appearance-none rounded-2xl border border-gray-800 bg-[#1d1d1d] px-4 text-sm font-medium text-white outline-none">
                         <option>All Categories</option>
@@ -49,7 +49,7 @@ console.log(search)
                     </svg>
                 </div>
 
-                {/* Sort */}
+         
                 <div className="relative w-56">
                     <select className="h-12 w-full appearance-none rounded-2xl border border-gray-800 bg-[#1d1d1d] px-4 text-sm font-medium text-white outline-none">
                         <option>Featured</option>

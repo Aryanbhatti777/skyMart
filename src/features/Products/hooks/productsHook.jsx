@@ -15,7 +15,7 @@ export const useAllProducts = () => {
         
         return () => clearTimeout(timeout)
     },[search])
-    console.log("hook called")
+
     const { data, isPending, error } = useQuery({
         queryKey: ["products", debounceSearch],
         queryFn: () => getAllProducts(debounceSearch),
