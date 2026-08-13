@@ -5,10 +5,13 @@ import Hero from './Hero';
 
 const MainPage = () => {
 
-  const user  = JSON.parse(localStorage.getItem("loggedInUser"))
+  const user = JSON.parse(localStorage.getItem("loggedInUser"))
   // console.log(user)
   return (
-    <Hero/>
+    <>
+      <Hero />
+      
+    </>
   )
 }
 

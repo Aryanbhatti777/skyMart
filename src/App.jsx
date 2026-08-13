@@ -10,6 +10,7 @@ import MainPage from "./shared/MainPage";
 
 import PublicProtected from "./protectedRoutes/publicProtected";
 import MainProtected from "./protectedRoutes/mainProtected";
+import Shop from "./features/Products/ui/pages/Shop";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             index: true,
             element: <MainPage />,
           },
+          {
+            path: "/main/shop",
+            element: <Shop/>
+          }
         ],
       },
     ],

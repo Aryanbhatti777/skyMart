@@ -35,11 +35,11 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-9">
                   <NavLink
                       to="/main"
-            //           className="
-            //   text-violet-500
-            //   font-semibold
-            //   transition
-            // "
+                      className="
+              text-violet-500
+              font-semibold
+              transition
+            "
                       className={({ isActive }) => {
                         return  isActive ? "text-violet-600" : "text-white"
                       }}
@@ -50,12 +50,12 @@ const Navbar = () => {
 
           <NavLink
             to="/main/shop"
-            // className="
-            //   text-gray-500
-            //   hover:text-white
-            //   font-medium
-            //   transition
-            // "
+            className="
+              text-gray-500
+              hover:text-white
+              font-medium
+              transition
+            "
             className={({ isActive }) => {
                         return  isActive ? "text-violet-600" : "text-white"
                       }}
@@ -65,12 +65,12 @@ const Navbar = () => {
 
           <NavLink
             to="/main/about"
-            // className="
-            //   text-gray-500
-            //   hover:text-white
-            //   font-medium
-            //   transition
-            // "
+            className="
+              text-gray-500
+              hover:text-white
+              font-medium
+              transition
+            "
                       className={({ isActive }) => {
                         return  isActive ? "text-violet-600" : "text-white"
                       }}
