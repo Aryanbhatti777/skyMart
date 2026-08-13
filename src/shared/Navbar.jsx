@@ -1,8 +1,14 @@
 import React from "react";
 import { Zap, ShoppingCart, LogOut } from "lucide-react";
 import { NavLink } from "react-router";
+import { useAuth } from "../features/Auth/hooks/AuthHook";
 
 const Navbar = () => {
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"))
+  const initialLetter = user?.slice(0, 1)
+  
+  const { logOut } = useAuth()
   return (
     <nav className="w-full h-[72px] bg-[#09090b] border-b border-white/[0.06]">
       <div className="max-w-[1520px] h-full mx-auto px-6 lg:px-8 flex items-center justify-between">
@@ -99,11 +105,11 @@ const Navbar = () => {
               text-sm
             "
             >
-              A
+              {initialLetter}
             </span>
 
             <span className="hidden sm:block text-gray-400 font-medium">
-              Aryan
+              {user}
             </span>
           </button>
 
@@ -137,6 +143,7 @@ const Navbar = () => {
               hover:border-violet-500/40
               transition
             "
+            onClick={logOut}
           >
             <LogOut size={20} strokeWidth={1.8} />
           </button>

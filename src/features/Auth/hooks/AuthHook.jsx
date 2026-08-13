@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux"
-import { login } from "../state/authSlice";
+import { login, logout } from "../state/authSlice";
 
 export const useAuth = (data) => {
 
@@ -45,5 +45,10 @@ export const useAuth = (data) => {
         
     }
 
-    return { register, handleSubmit, reset, errors, navigate, registerForm, loginForm}
+    const logOut = () => {
+        dispatch(logout())
+        toast.success("Logged out successfully")
+    }
+
+    return { register, handleSubmit, reset, errors, navigate, registerForm, loginForm, logOut}
 }

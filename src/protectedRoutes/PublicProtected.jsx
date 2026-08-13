@@ -1,10 +1,11 @@
-import { Navigate, Outlet } from "react-router";
+
+import { useSelector } from "react-redux";
+import { Navigate, Outlet} from "react-router";
 
 const PublicProtected = () => {
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
-
+  const user = useSelector(state => state.auth.user);
   if (user) {
-    return <Navigate to="/main" replace />;
+    return <Navigate to="/main" replace/>
   }
 
   return <Outlet />;

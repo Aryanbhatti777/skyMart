@@ -15,7 +15,7 @@ const Hero = () => {
           bg-[#101111]
           px-8 sm:px-12 lg:px-16
           py-12
-          flex items-center
+          flex items-center 
         "
       >
         {/* Grid Background */}
@@ -51,7 +51,7 @@ const Hero = () => {
               font-medium
               tracking-[0.12em]
               uppercase
-              mb-5
+              mb-5 rotate
             "
             >
               Good Evening 👋

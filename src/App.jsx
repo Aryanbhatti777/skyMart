@@ -11,47 +11,45 @@ import MainPage from "./shared/MainPage";
 import PublicProtected from "./protectedRoutes/publicProtected";
 import MainProtected from "./protectedRoutes/mainProtected";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <PublicProtected />,
+    children: [
+      {
+        element: <AuthLayout />,
+        children: [
+          {
+            index: true,
+            element: <Login />,
+          },
+          {
+            path: "register",
+            element: <Register />,
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    path: "/main",
+    element: <MainProtected />,
+    children: [
+      {
+        element: <MainLayout />,
+        children: [
+          {
+            index: true,
+            element: <MainPage />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
 function App() {
-  const router = createBrowserRouter([
-
-    {
-      path: "/",
-      element: <PublicProtected />,
-      children: [
-        {
-          element: <AuthLayout />,
-          children: [
-            {
-              index: true,
-              element: <Login />,
-            },
-            {
-              path: "register",
-              element: <Register />,
-            },
-          ],
-        },
-      ],
-    },
-
-
-    {
-      path: "/main",
-      element: <MainProtected />,
-      children: [
-        {
-          element: <MainLayout />,
-          children: [
-            {
-              index: true,
-              element: <MainPage />,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
-
   return (
     <>
       <RouterProvider router={router} />

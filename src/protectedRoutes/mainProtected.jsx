@@ -1,11 +1,12 @@
+
+import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router";
 
 const MainProtected = () => {
-  const user = localStorage.getItem("loggedInUser");
+  const user = useSelector(state => state.auth.user)
 
-  // Not logged in → don't allow /main
   if (!user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace/>
   }
 
   return <Outlet />;
