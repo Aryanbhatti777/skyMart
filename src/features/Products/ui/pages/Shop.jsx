@@ -7,7 +7,7 @@ import Filter from '../components/Filter';
 
 const Shop = () => {
 
-    const { search, setSearch } = useAllProducts()
+    const { search, setSearch} = useAllProducts()
 
   return (
       <>

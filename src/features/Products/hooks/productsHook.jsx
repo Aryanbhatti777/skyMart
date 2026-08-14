@@ -23,8 +23,8 @@ export const useAllProducts = () => {
         queryFn: () => getAllProducts(debounceSearch, sortItem),
         staleTime: 5 * 60 * 1000
     })
-// console.log(data?.products)
-    return { data, isPending, error, search, setSearch, sortItem, setSortItem}
+    const length = data?.products.length
+    return { data, isPending, error, search, setSearch, sortItem, setSortItem, length}
 }
 
 export const useAllCategories = () => {

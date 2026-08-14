@@ -8,8 +8,8 @@ const ProductCard = ({ product }) => {
     const discountedPrice = ( price - (price * discountPercentage) / 100 ).toFixed(2);
 
     return (
-        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl cursor-pointer"
-        onClick={() => navigate(`/main/productdetails/${id}`)}>
+        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl"
+        >
 
             <div className="relative flex h-60 items-center justify-center overflow-hidden bg-gray-50 p-6">
         
@@ -31,7 +31,8 @@ const ProductCard = ({ product }) => {
                     src={thumbnail}
                     loading="lazy"
                     alt={title}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110  cursor-pointer"
+                    onClick={() => navigate(`/main/productdetails/${id}`)}
                 />
             </div>
 
@@ -90,7 +91,7 @@ const ProductCard = ({ product }) => {
                 
                     <button
                         disabled={stock === 0}
-                        className="mt-4 w-full rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+                        className="mt-4 w-full rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-gray-300  cursor-pointer"
                     >
                         {stock > 0 ? "Add to Cart" : "Out of Stock"}
                     </button>
