@@ -1,6 +1,6 @@
 import { useAllCategories, useAllProducts } from "../../hooks/productsHook";
 
-const Filter = ({ search, setSearch}) => {
+const Filter = ({ search, setSearch, category, setCategory}) => {
     const { data, error } = useAllCategories()
 
     return (
@@ -30,12 +30,12 @@ const Filter = ({ search, setSearch}) => {
 
         
                 <div className="relative w-48">
-                    <select className="h-12 w-full appearance-none rounded-2xl border border-gray-800 bg-[#1d1d1d] px-4 text-sm font-medium text-white outline-none">
+                    <select className="h-12 w-full appearance-none rounded-2xl border border-gray-800 bg-[#1d1d1d] px-4 text-sm font-medium text-white outline-none"
+                        onChange={(e) => setCategory(e.target.value)} value={category}>
                         <option>All Categories</option>
-                        <option>Beauty</option>
-                        <option>Fragrances</option>
-                        <option>Furniture</option>
-                        <option>Groceries</option>
+                        {data?.map((cat) => {
+                            return <option value={cat.name} key={cat.slug}>{cat.name }</option>
+                        })}
                     </select>
 
                     <svg

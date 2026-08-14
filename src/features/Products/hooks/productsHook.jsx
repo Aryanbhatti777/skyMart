@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
-import { getAllCategories, getAllProducts } from "../api/ProductsApi"
+import { getAllCategories, getAllProducts, getProductByCategory } from "../api/ProductsApi"
 import { useEffect, useState } from "react"
 
 
@@ -7,6 +7,7 @@ export const useAllProducts = () => {
 
     const [search, setSearch] = useState("")
     const [debounceSearch, setDebounceSearch] = useState("")
+
 
     useEffect(() => {
         let timeout = setTimeout(() => {
@@ -21,9 +22,8 @@ export const useAllProducts = () => {
         queryFn: () => getAllProducts(debounceSearch),
         staleTime: 5 * 60 * 1000
     })
-    const length = data?.products.length
 
-    return { data, isPending, error, search, setSearch, length}
+    return { data, isPending, error, search, setSearch}
 }
 
 export const useAllCategories = () => {
@@ -33,4 +33,17 @@ export const useAllCategories = () => {
         staleTime: 5 * 60 * 1000
     })
     return {data, error}
+}
+
+export const useProductByCategory = () => {
+    const [category, setCategory] = useState("All products")
+    
+    const { data, isPending, error } = useQuery({
+        queryKey: ["productsByCategory", category],
+        queryFn: () => getProductByCategory(category),
+        staleTime: 5 * 60 * 1000
+    })
+
+    return {category, setCategory, data, isPending, error}
+    
 }

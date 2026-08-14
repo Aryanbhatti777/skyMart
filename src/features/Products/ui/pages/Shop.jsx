@@ -7,13 +7,12 @@ import Filter from '../components/Filter';
 
 const Shop = () => {
 
-    const { search, setSearch, length } = useAllProducts()
+    const { search, setSearch } = useAllProducts()
 
   return (
       <>
           <div className="pl-9 pt-10">
               <h1 className="text-4xl ">All Products</h1>
-              <p className="text-gray-500">{length} products found</p>
           </div>
 
           <div className="pt-20 px-5" >
