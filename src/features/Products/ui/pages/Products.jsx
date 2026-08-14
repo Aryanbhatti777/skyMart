@@ -10,7 +10,10 @@ const Products = () => {
   const { data, isPending, error, search, setSearch } = useAllProducts();
   const { category, setCategory, data: productsByCategory, isPending: pending, error: errors} = useProductByCategory()
 
-
+  if (isPending) return <Loader/>;
+  if (pending) return <Loader/>
+  if(errors) return toast.error("Some error occured")
+  if (error) return toast.error("Some error occured")
 
   return (
     <>
