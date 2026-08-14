@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
-import { getAllCategories, getAllProducts, getProductByCategory } from "../api/ProductsApi"
+import { getAllCategories, getAllProducts, getProductByCategory, getProductDetails } from "../api/ProductsApi"
 import { useEffect, useState } from "react"
 
 
@@ -47,4 +47,15 @@ export const useProductByCategory = (sortItem) => {
 
     return {category, setCategory, data, isPending, error}
     
+}
+
+export const useProductDetails = (id) => {
+
+    const { data, isPending, error, isFetching } = useQuery({
+        queryKey: ["productdetails"],
+        queryFn: () => getProductDetails(id),
+    })
+
+    console.log(data)
+    return {data, isPending, error, isFetching}
 }

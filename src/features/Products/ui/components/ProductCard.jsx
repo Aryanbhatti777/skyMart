@@ -1,27 +1,18 @@
+import { useNavigate } from "react-router";
+
 const ProductCard = ({ product }) => {
-    const {
-        title,
-        description,
-        price,
-        discountPercentage,
-        rating,
-        stock,
-        brand,
-        thumbnail,
-        category,
+    const { title, description, price, discountPercentage, rating, stock, brand, thumbnail,category, id
     } = product;
 
-    const discountedPrice = (
-        price -
-        (price * discountPercentage) / 100
-    ).toFixed(2);
+    const navigate = useNavigate()
+    const discountedPrice = ( price - (price * discountPercentage) / 100 ).toFixed(2);
 
     return (
-        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl">
+        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl cursor-pointer"
+        onClick={() => navigate(`/main/productdetails/${id}`)}>
 
-     
             <div className="relative flex h-60 items-center justify-center overflow-hidden bg-gray-50 p-6">
-           
+        
                 <span className="absolute left-4 top-4 z-10 rounded-full bg-violet-600 px-3 py-1 text-xs font-semibold text-white">
                     -{Math.round(discountPercentage)}%
                 </span>
@@ -38,6 +29,7 @@ const ProductCard = ({ product }) => {
 
                 <img
                     src={thumbnail}
+                    loading="lazy"
                     alt={title}
                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
                 />

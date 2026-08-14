@@ -7,15 +7,7 @@ import Loader from "../../../../shared/Loader";
 import { toast } from "react-toastify";
 
 const Products = () => {
-  const {
-    data,
-    isPending,
-    error,
-    search,
-    setSearch,
-    sortItem,
-    setSortItem,
-  } = useAllProducts();
+  const { data, isPending, error, search, setSearch, sortItem, setSortItem} = useAllProducts();
 
   const {
     category,

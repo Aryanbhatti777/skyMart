@@ -59,3 +59,15 @@ export const getProductByCategory = async (cat, sortVal) => {
         console.log(error)
     }
 }
+
+export const getProductDetails = async (id) => {
+
+    try {
+        
+        const URL = `/products/${id}`
+        const res = await api.get(URL)
+        return res.data
+    } catch (error) {
+        console.log(error)
+    }
+}
