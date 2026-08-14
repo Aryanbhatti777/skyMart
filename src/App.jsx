@@ -11,6 +11,7 @@ import MainPage from "./shared/MainPage";
 import PublicProtected from "./protectedRoutes/publicProtected";
 import MainProtected from "./protectedRoutes/mainProtected";
 import Shop from "./features/Products/ui/pages/Shop";
+import About from "./shared/About";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,9 @@ const router = createBrowserRouter([
           {
             path: "/main/shop",
             element: <Shop/>
+          }, {
+            path: "/main/about",
+            element: <About/>
           }
         ],
       },
