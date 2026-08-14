@@ -7,6 +7,7 @@ export const useAllProducts = () => {
 
     const [search, setSearch] = useState("")
     const [debounceSearch, setDebounceSearch] = useState("")
+    const [sortItem, setSortItem] = useState("")
 
 
     useEffect(() => {
@@ -18,12 +19,12 @@ export const useAllProducts = () => {
     },[search])
 
     const { data, isPending, error } = useQuery({
-        queryKey: ["products", debounceSearch],
-        queryFn: () => getAllProducts(debounceSearch),
+        queryKey: ["products",debounceSearch, sortItem],
+        queryFn: () => getAllProducts(debounceSearch, sortItem),
         staleTime: 5 * 60 * 1000
     })
-
-    return { data, isPending, error, search, setSearch}
+// console.log(data?.products)
+    return { data, isPending, error, search, setSearch, sortItem, setSortItem}
 }
 
 export const useAllCategories = () => {
@@ -35,12 +36,12 @@ export const useAllCategories = () => {
     return {data, error}
 }
 
-export const useProductByCategory = () => {
-    const [category, setCategory] = useState("All products")
+export const useProductByCategory = (sortItem) => {
+    const [category, setCategory] = useState("")
     
     const { data, isPending, error } = useQuery({
-        queryKey: ["productsByCategory", category],
-        queryFn: () => getProductByCategory(category),
+        queryKey: ["productsByCategory", category, sortItem],
+        queryFn: () => getProductByCategory(category, sortItem),
         staleTime: 5 * 60 * 1000
     })
 
