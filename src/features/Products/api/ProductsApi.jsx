@@ -51,10 +51,10 @@ export const getProductByCategory = async (cat, sortVal) => {
         } else if (sortVal === "highestrated") {
             URL += cat === "" ? `&sortBy=rating&order=desc` : `?sortBy=rating&order=desc`
         }
-        console.log(URL)
+
         let res = await api.get(URL)
-        console.log(res.data)
         return res.data
+
     } catch (error) {
         console.log(error)
     }

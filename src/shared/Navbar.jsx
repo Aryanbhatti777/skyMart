@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Zap, ShoppingCart, LogOut, X } from "lucide-react";
 import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../features/Auth/hooks/AuthHook";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
-
+  const { cartLength } = useSelector(state => state.cart)
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const initialLetter = user?.slice(0, 1);
   const navigate = useNavigate()
@@ -100,7 +101,7 @@ const Navbar = () => {
 
             {/* ================= CART ================= */}
             <button
-              onClick={() => setCartOpen(true)}
+              onClick={() => navigate("/main/cart")}
               className="
                 relative flex h-12 w-12 items-center justify-center
                 rounded-2xl border border-white/10 bg-[#111113]
@@ -118,7 +119,7 @@ const Navbar = () => {
                   bg-violet-600 px-1 text-[10px] font-bold text-white
                 "
               >
-                0
+                {cartLength}
               </span>
             </button>
 
@@ -138,143 +139,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* ================================================= */}
-      {/* CART OVERLAY */}
-      {/* ================================================= */}
-
-      {cartOpen && (
-        <div
-          className="
-            fixed inset-0 z-50
-            bg-black/60 backdrop-blur-sm
-          "
-          onClick={() => setCartOpen(false)}
-        >
-          {/* ================= CART DRAWER ================= */}
-          <aside
-            onClick={(e) => e.stopPropagation()}
-            className="
-              absolute right-0 top-0
-              flex h-full w-[35vw] min-w-[380px]
-              flex-col
-              border-l border-white/[0.08]
-              bg-[#0c0c0f]
-              shadow-2xl shadow-black/50
-
-              animate-[cartSlideIn_0.35s_cubic-bezier(0.16,1,0.3,1)]
-            "
-          >
-            {/* ================= CART HEADER ================= */}
-            <div
-              className="
-                flex h-[72px] shrink-0 items-center justify-between
-                border-b border-white/[0.06] px-6
-              "
-            >
-              <div>
-                <h2 className="text-lg font-semibold text-white">Your Cart</h2>
-
-                <p className="mt-0.5 text-xs text-zinc-600">0 items</p>
-              </div>
-
-              <button
-                onClick={() => setCartOpen(false)}
-                className="
-                  flex h-10 w-10 items-center justify-center
-                  rounded-xl border border-white/10
-                  bg-[#151518] text-zinc-500
-                  transition
-                  hover:border-violet-500/40
-                  hover:text-white
-                "
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            {/* ================= EMPTY CART ================= */}
-            <div className="flex flex-1 items-center justify-center px-6">
-              <div className="text-center">
-                <div
-                  className="
-                    mx-auto flex h-20 w-20 items-center justify-center
-                    rounded-2xl border border-violet-500/10
-                    bg-violet-500/10
-                  "
-                >
-                  <ShoppingCart
-                    size={32}
-                    strokeWidth={1.5}
-                    className="text-violet-500"
-                  />
-                </div>
-
-                <h3 className="mt-5 text-lg font-semibold text-white">
-                  Your cart is empty
-                </h3>
-
-                <p className="mx-auto mt-2 max-w-[280px] text-sm leading-6 text-zinc-600">
-                  Looks like you haven't added anything to your cart yet.
-                </p>
-
-                <button
-                  onClick={() => {
-                    setCartOpen(false)
-                    navigate("/main/shop")
-                  }}
-                  className="
-                    mt-6 rounded-xl
-                    bg-violet-600 px-6 py-3
-                    text-sm font-semibold text-white
-                    transition
-                    hover:bg-violet-500
-                    hover:shadow-lg hover:shadow-violet-600/20
-                  "
-                >
-                  Continue Shopping
-                </button>
-              </div>
-            </div>
-
-            {/* ================= CART FOOTER ================= */}
-            <div className="shrink-0 border-t border-white/[0.06] p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="text-sm text-zinc-500">Subtotal</span>
-
-                <span className="text-lg font-semibold text-white">$0.00</span>
-              </div>
-
-              <button
-                disabled
-                className="
-                  h-12 w-full rounded-xl
-                  bg-violet-600
-                  text-sm font-semibold text-white
-                  opacity-40
-                  cursor-not-allowed
-                "
-              >
-                Checkout
-              </button>
-            </div>
-          </aside>
-        </div>
-      )}
-
-      {/* Drawer animation */}
-      <style>
-        {`
-          @keyframes cartSlideIn {
-            from {
-              transform: translateX(100%);
-            }
-
-            to {
-              transform: translateX(0);
-            }
-          }
-        `}
-      </style>
+      
     </>
   );
 };

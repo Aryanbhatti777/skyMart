@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router";
+import { useCart } from "../../../Cart/hooks/cartHook";
 
 const ProductCard = ({ product }) => {
     const { title, description, price, discountPercentage, rating, stock, brand, thumbnail,category, id
     } = product;
 
     const navigate = useNavigate()
-    const discountedPrice = ( price - (price * discountPercentage) / 100 ).toFixed(2);
-
+    const discountedPrice = (price - (price * discountPercentage) / 100).toFixed(2);
+    
+    const { useAddCart } = useCart()
     return (
         <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl"
         >
@@ -92,6 +94,7 @@ const ProductCard = ({ product }) => {
                     <button
                         disabled={stock === 0}
                         className="mt-4 w-full rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-gray-300  cursor-pointer"
+                        onClick={() => useAddCart(product)}
                     >
                         {stock > 0 ? "Add to Cart" : "Out of Stock"}
                     </button>

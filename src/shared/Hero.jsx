@@ -1,9 +1,11 @@
 import React from "react";
 import { ArrowRight, Box, TrendingUp, Star, Tag } from "lucide-react";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { cartLength } = useSelector(state=> state.cart)
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-6">
       {/* HERO */}
@@ -181,7 +183,7 @@ const Hero = () => {
         <StatCard
           icon={<Box size={24} />}
           iconStyle="bg-violet-300 text-violet-800"
-          value="0"
+          value={cartLength}
           title="Cart Items"
           subtitle="In your bag"
         />

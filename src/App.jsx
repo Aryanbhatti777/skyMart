@@ -13,6 +13,7 @@ import MainProtected from "./protectedRoutes/mainProtected";
 import Shop from "./features/Products/ui/pages/Shop";
 import About from "./shared/About";
 import ProductDetails from "./features/Products/ui/pages/ProductDetails";
+import Cart from "./features/Cart/ui/Cart";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
           {
             path: "/main/productdetails/:id",
             element: <ProductDetails/>
+          },
+          {
+            path: "/main/cart",
+            element: <Cart/>
           }
         ],
       },
