@@ -1,18 +1,7 @@
 import React, { useState } from "react";
 import { useProductDetails } from "../../hooks/productsHook";
 import { useParams, Link } from "react-router";
-import {
-    ArrowLeft,
-    ChevronLeft,
-    ChevronRight,
-    Minus,
-    Plus,
-    RotateCcw,
-    ShieldCheck,
-    ShoppingBag,
-    Star,
-    Truck,
-} from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Minus, Plus, RotateCcw, ShieldCheck, ShoppingBag, Star, Truck } from "lucide-react";
 import Loader from "../../../../shared/Loader";
 
 const ProductDetails = () => {

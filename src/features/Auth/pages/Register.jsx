@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-[#09090b] flex items-center justify-center px-4">
       <div className="w-full max-w-[460px]">
-        {/* Logo */}
+
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2">
             <div className="w-11 h-11 rounded-xl bg-violet-500 flex items-center justify-center">
@@ -19,7 +19,7 @@ const Register = () => {
           </div>
         </div>
 
-        {/* Register Card */}
+   
         <div className="bg-[#111113] border border-white/10 rounded-[26px] px-7 sm:px-10 py-9">
           <div className="mb-8">
             <h2 className="text-3xl font-semibold text-white tracking-tight">
@@ -32,7 +32,7 @@ const Register = () => {
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit(registerForm)}>
-            {/* Name */}
+ 
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
                 👤
@@ -49,7 +49,7 @@ const Register = () => {
             </div>
             {errors.name && <p className="text-red-500">{ errors.name.message}</p>}
 
-            {/* Email */}
+
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
                 ✉
@@ -66,7 +66,7 @@ const Register = () => {
             </div>
             {errors.email && <p className="text-red-500">{ errors.email.message}</p>}
 
-            {/* Password */}
+
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
                 🔒
@@ -84,7 +84,7 @@ const Register = () => {
             {errors.password && <p className="text-red-500">{ errors.password.message}</p>}
             
 
-            {/* Confirm Password */}
+
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
                 🔒
@@ -105,7 +105,7 @@ const Register = () => {
             </div>
             {errors.confirmPassword && <p className="text-red-500">{ errors.confirmPassword.message}</p>}
 
-            {/* Button */}
+
             <button
               className="w-full h-14 mt-2 rounded-2xl
               bg-violet-500 hover:bg-violet-400
@@ -118,7 +118,6 @@ const Register = () => {
             </button>
           </form>
 
-          {/* Login */}
           <p className="text-center text-sm text-gray-500 mt-8">
             Already have an account?{" "}
             <span

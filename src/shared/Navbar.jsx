@@ -17,7 +17,7 @@ const Navbar = () => {
     <>
       <nav className="relative z-40 h-[72px] w-full border-b border-white/[0.06] bg-[#09090b]">
         <div className="mx-auto flex h-full max-w-[1520px] items-center justify-between px-6 lg:px-8">
-          {/* ================= LOGO ================= */}
+
           <div className="flex items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 shadow-lg shadow-violet-600/20">
               <Zap
@@ -32,7 +32,6 @@ const Navbar = () => {
             </h1>
           </div>
 
-          {/* ================= NAVIGATION ================= */}
           <div className="hidden items-center gap-9 md:flex">
             <NavLink
               to="/main"
@@ -75,9 +74,8 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* ================= RIGHT SIDE ================= */}
           <div className="flex items-center gap-2.5">
-            {/* User */}
+   
             <button
               className="
                 flex h-12 items-center gap-2.5 rounded-2xl
@@ -99,7 +97,7 @@ const Navbar = () => {
               </span>
             </button>
 
-            {/* ================= CART ================= */}
+     
             <button
               onClick={() => navigate("/main/cart")}
               className="
@@ -111,7 +109,7 @@ const Navbar = () => {
             >
               <ShoppingCart size={20} strokeWidth={1.8} />
 
-              {/* Cart count */}
+  
               <span
                 className="
                   absolute -right-1 -top-1 flex h-5 min-w-5
@@ -123,7 +121,7 @@ const Navbar = () => {
               </span>
             </button>
 
-            {/* Logout */}
+
             <button
               onClick={logOut}
               className="
@@ -139,7 +137,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      
     </>
   );
 };

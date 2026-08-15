@@ -11,7 +11,7 @@ const CartItemCard = ({ item }) => {
         <div className="rounded-2xl border border-zinc-800 bg-[#101010] p-4 transition hover:border-violet-500/20 sm:p-5">
             <div className="flex gap-4">
 
-                {/* Product Image */}
+       
                 <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#18181b] sm:h-32 sm:w-32">
                     <img
                         src={item.thumbnail}
@@ -19,11 +19,8 @@ const CartItemCard = ({ item }) => {
                         className="h-full w-full object-contain p-3 transition-transform duration-300 hover:scale-105"
                     />
                 </div>
-
-                {/* Product Content */}
+   
                 <div className="flex min-w-0 flex-1 flex-col justify-between">
-
-                    {/* Top */}
                     <div className="flex items-start justify-between gap-3">
 
                         <div className="min-w-0">
@@ -40,7 +37,6 @@ const CartItemCard = ({ item }) => {
                             </p>
                         </div>
 
-                        {/* Remove */}
                         <button
                             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-600 transition hover:bg-red-500/10 hover:text-red-400"
                             aria-label="Remove item"
@@ -50,10 +46,8 @@ const CartItemCard = ({ item }) => {
                         </button>
                     </div>
 
-                    {/* Bottom */}
                     <div className="mt-5 flex items-center justify-between gap-4">
 
-                        {/* Quantity */}
                         <div className="flex h-9 items-center rounded-lg border border-zinc-800 bg-[#151515]">
 
                             <button
@@ -79,7 +73,6 @@ const CartItemCard = ({ item }) => {
 
                         </div>
 
-                        {/* Total Price */}
                         <div className="text-right">
                             <p className="text-base font-bold text-white sm:text-lg">
                                 ${totalPrice}
