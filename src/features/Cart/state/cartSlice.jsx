@@ -13,8 +13,14 @@ const cartSlice = createSlice({
     },
     reducers: {
         add: (state, action) => {
+            let contain = state.cartItems.find(item => item.id === action.payload.id)
+            if (contain) {
+                toast.error("Item already in cart")
+                return
+            }
             state.cartItems.push(action.payload)
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+            toast.success("Item added to cart")
             state.cartLength = state.cartItems.length
             state.grandTotal = state.cartItems.reduce((acc, curr) => {
                 return acc + curr.quantity * curr.price
@@ -68,7 +74,16 @@ const cartSlice = createSlice({
                 return acc + curr.quantity * curr.price
             }, 0)
         },
-        removeAll: (state, action) => {
+        removeAll: (state) => {
+            state.cartItems = []
+            localStorage.removeItem("cartItems")
+            state.cartLength = state.cartItems.length
+            state.grandTotal = state.cartItems.reduce((acc, curr) => {
+                return acc + curr.quantity * curr.price
+            }, 0)
+        },
+        checkout: (state) => {
+            toast.success("Order placed (demo)")
             state.cartItems = []
             localStorage.removeItem("cartItems")
             state.cartLength = state.cartItems.length
@@ -80,5 +95,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { add, increase, decrease, remove, removeAll } = cartSlice.actions
+export const { add, increase, decrease, remove, removeAll, checkout } = cartSlice.actions
 export default cartSlice.reducer

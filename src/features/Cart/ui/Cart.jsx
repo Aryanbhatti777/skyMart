@@ -8,15 +8,17 @@ import {
   Truck,
   ShieldCheck,
 } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import CartItems from "./CartItems";
 import { useSelector } from "react-redux";
 import { useCart } from "../hooks/cartHook";
+import { toast } from "react-toastify";
 
 const Cart = () => {
 
-  const { grandTotal } = useSelector(state => state.cart)
-  const { clearCart } = useCart()
+  const { grandTotal, cartItems } = useSelector(state => state.cart)
+  const { clearCart, placeOrder } = useCart()
+  const navigate = useNavigate()
  
   return (
     <main className="min-h-screen bg-[#080808] px-4 py-8 text-white sm:px-6 lg:px-10">
@@ -113,7 +115,16 @@ const Cart = () => {
             </div>
 
             {/* Checkout */}
-            <button className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-violet-600 font-semibold text-white transition hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-600/20">
+            <button className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-violet-600 font-semibold text-white transition hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-600/20"
+              onClick={() => {
+                if (cartItems?.length === 0) {
+                  toast.error("Please add items in cart first ")
+                  return 
+                }
+                placeOrder(),
+                  navigate("/main/shop")
+              }}
+            >
               <ShoppingBag size={18} />
               Proceed to Checkout
             </button>

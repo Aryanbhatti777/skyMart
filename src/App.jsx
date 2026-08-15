@@ -1,19 +1,24 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
+import { lazy, Suspense } from "react";
 
-import AuthLayout from "./Layouts/AuthLayout";
-import MainLayout from "./Layouts/MainLayout";
+const AuthLayout = lazy(() => import("./Layouts/AuthLayout"));
+const MainLayout = lazy(() => import("./Layouts/MainLayout"));
 
-import Login from "./features/Auth/pages/Login";
-import Register from "./features/Auth/pages/Register";
-import MainPage from "./shared/MainPage";
+const Login = lazy(() => import("./features/Auth/pages/Login"));
+const Register = lazy(() => import("./features/Auth/pages/Register"));
+const MainPage = lazy(() => import("./shared/MainPage"));
 
-import PublicProtected from "./protectedRoutes/publicProtected";
-import MainProtected from "./protectedRoutes/mainProtected";
-import Shop from "./features/Products/ui/pages/Shop";
-import About from "./shared/About";
-import ProductDetails from "./features/Products/ui/pages/ProductDetails";
-import Cart from "./features/Cart/ui/Cart";
+const PublicProtected = lazy(() => import("./protectedRoutes/publicProtected"));
+const MainProtected = lazy(() => import("./protectedRoutes/mainProtected"));
+
+const Shop = lazy(() => import("./features/Products/ui/pages/Shop"));
+const About = lazy(() => import("./shared/About"));
+const ProductDetails = lazy(() =>
+  import("./features/Products/ui/pages/ProductDetails")
+);
+
+const Cart = lazy(() => import("./features/Cart/ui/Cart"));
 
 const router = createBrowserRouter([
   {
@@ -72,7 +77,17 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        theme="dark"
+        toastClassName="!bg-[#18181b] !text-white !rounded-xl !border !border-violet-500/30 !shadow-lg"
+        bodyClassName="!text-sm !font-medium"
+      />
     </>
   );
 }
