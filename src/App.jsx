@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { lazy, Suspense } from "react";
+import PublicProtected from "./protectedRoutes/publicProtected";
 
 const AuthLayout = lazy(() => import("./Layouts/AuthLayout"));
 const MainLayout = lazy(() => import("./Layouts/MainLayout"));
@@ -8,8 +9,6 @@ const MainLayout = lazy(() => import("./Layouts/MainLayout"));
 const Login = lazy(() => import("./features/Auth/pages/Login"));
 const Register = lazy(() => import("./features/Auth/pages/Register"));
 const MainPage = lazy(() => import("./shared/MainPage"));
-
-const PublicProtected = lazy(() => import("./protectedRoutes/publicProtected"));
 const MainProtected = lazy(() => import("./protectedRoutes/mainProtected"));
 
 const Shop = lazy(() => import("./features/Products/ui/pages/Shop"));
