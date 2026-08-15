@@ -1,7 +1,10 @@
 import React from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { useCart } from "../hooks/cartHook";
 
 const CartItemCard = ({ item }) => {
+
+    const { increaseQuantity } = useCart()
     return (
         <div className="rounded-2xl border border-zinc-800 bg-[#101010] p-4 transition hover:border-violet-500/20 sm:p-5">
             <div className="flex gap-4">
@@ -53,6 +56,7 @@ const CartItemCard = ({ item }) => {
                             <button
                                 className="flex h-full w-9 items-center justify-center text-zinc-500 transition hover:text-white"
                                 aria-label="Decrease quantity"
+                                
                             >
                                 <Minus size={14} />
                             </button>
@@ -64,6 +68,7 @@ const CartItemCard = ({ item }) => {
                             <button
                                 className="flex h-full w-9 items-center justify-center text-zinc-500 transition hover:text-white"
                                 aria-label="Increase quantity"
+                                onClick={() => increaseQuantity(item.id)}
                             >
                                 <Plus size={14} />
                             </button>
