@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const { cartLength } = useSelector(state=> state.cart)
+  const { cartLength, grandTotal } = useSelector(state => state.cart)
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-6">
       {/* HERO */}
@@ -192,7 +192,7 @@ const Hero = () => {
         <StatCard
           icon={<TrendingUp size={24} />}
           iconStyle="bg-blue-500/10 text-blue-400"
-          value="₹0.00"
+          value={grandTotal}
           title="Cart Value"
           subtitle="Ready to checkout"
         />

@@ -4,7 +4,9 @@ import { useCart } from "../hooks/cartHook";
 
 const CartItemCard = ({ item }) => {
 
-    const { increaseQuantity } = useCart()
+    const totalPrice = (item.price * item.quantity).toFixed(2)
+
+    const { increaseQuantity, decreaseQuantity } = useCart()
     return (
         <div className="rounded-2xl border border-zinc-800 bg-[#101010] p-4 transition hover:border-violet-500/20 sm:p-5">
             <div className="flex gap-4">
@@ -56,7 +58,8 @@ const CartItemCard = ({ item }) => {
                             <button
                                 className="flex h-full w-9 items-center justify-center text-zinc-500 transition hover:text-white"
                                 aria-label="Decrease quantity"
-                                
+                                disabled={item.quantity === 1}
+                                onClick={() => decreaseQuantity(item.id)}
                             >
                                 <Minus size={14} />
                             </button>
@@ -78,7 +81,7 @@ const CartItemCard = ({ item }) => {
                         {/* Total Price */}
                         <div className="text-right">
                             <p className="text-base font-bold text-white sm:text-lg">
-                                ${(item.price * item.quantity).toFixed(2)}
+                                {totalPrice}
                             </p>
 
                             {item.quantity > 1 && (

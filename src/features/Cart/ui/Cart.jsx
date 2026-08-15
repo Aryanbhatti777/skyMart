@@ -10,8 +10,12 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 import CartItems from "./CartItems";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+
+  const { grandTotal } = useSelector(state => state.cart)
+  console.log(grandTotal)
   return (
     <main className="min-h-screen bg-[#080808] px-4 py-8 text-white sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
@@ -76,7 +80,7 @@ const Cart = () => {
                 </span>
 
                 <span className="font-medium">
-                  $49.97
+                  {grandTotal.toFixed(2)}
                 </span>
               </div>
 
@@ -90,15 +94,6 @@ const Cart = () => {
                 </span>
               </div>
 
-              <div className="flex justify-between text-sm">
-                <span className="text-zinc-500">
-                  Tax
-                </span>
-
-                <span className="font-medium">
-                  $4.99
-                </span>
-              </div>
 
             </div>
 
@@ -109,7 +104,7 @@ const Cart = () => {
               </span>
 
               <span className="text-2xl font-bold">
-                $54.96
+                {grandTotal.toFixed(2)}
               </span>
             </div>
 
@@ -134,7 +129,7 @@ const Cart = () => {
                   </p>
 
                   <p className="mt-1 text-[11px] text-zinc-600">
-                    On orders over $50
+                    Don't worry about extra charges.
                   </p>
                 </div>
               </div>

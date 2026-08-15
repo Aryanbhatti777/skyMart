@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { add, update } from "../state/cartSlice"
+import { add, decrease, increase } from "../state/cartSlice"
 import { toast } from "react-toastify"
 
 
@@ -12,8 +12,13 @@ export const useCart = () => {
     }
 
     const increaseQuantity = (item) => {
-        dispatch(update(item))
+        dispatch(increase(item))
+        
     }
 
-    return {useAddCart, increaseQuantity}
+    const decreaseQuantity = (item) => {
+        dispatch(decrease(item))
+    }
+
+    return {useAddCart, increaseQuantity, decreaseQuantity}
 }

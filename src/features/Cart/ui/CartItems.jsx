@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import CartItemCard from './CartItemCard';
 
 const CartItems = () => {
-    const { cartItems } = useSelector(state => state.cart)
+  const { cartItems } = useSelector(state => state.cart)
+  
   return (
       <>
       {cartItems.map((item) => {
