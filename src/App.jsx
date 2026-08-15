@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { lazy, Suspense } from "react";
-import PublicProtected from "./protectedRoutes/publicProtected";
+import PublicProtected from "./protectedRoutes/PublicProtected";
 
 const AuthLayout = lazy(() => import("./Layouts/AuthLayout"));
 const MainLayout = lazy(() => import("./Layouts/MainLayout"));
