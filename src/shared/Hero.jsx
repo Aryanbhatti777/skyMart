@@ -2,10 +2,12 @@ import React from "react";
 import { ArrowRight, Box, TrendingUp, Star, Tag } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { useAllCategories } from "../features/Products/hooks/productsHook";
 
 const Hero = () => {
   const navigate = useNavigate();
   const { cartLength, grandTotal } = useSelector(state => state.cart)
+  const { data } = useAllCategories()
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-6">
       {/* HERO */}
@@ -142,7 +144,7 @@ const Hero = () => {
               text-center
             "
             >
-              <h3 className="text-3xl font-bold">20+</h3>
+              <h3 className="text-3xl font-bold">190+</h3>
 
               <p className="text-white text-sm mt-1">Products Available</p>
             </div>
@@ -160,7 +162,7 @@ const Hero = () => {
             >
               <h3 className="text-white text-3xl font-semibold">Free</h3>
 
-              <p className="text-gray-500 text-sm mt-1">Delivery on ₹999+</p>
+              <p className="text-gray-500 text-sm mt-1">Delivery </p>
             </div>
           </div>
         </div>
@@ -192,7 +194,7 @@ const Hero = () => {
         <StatCard
           icon={<TrendingUp size={24} />}
           iconStyle="bg-blue-500/10 text-blue-400"
-          value={grandTotal}
+          value={`$${grandTotal.toFixed(2)}`}
           title="Cart Value"
           subtitle="Ready to checkout"
         />
@@ -210,7 +212,7 @@ const Hero = () => {
         <StatCard
           icon={<Tag size={24} />}
           iconStyle="bg-purple-500/10 text-purple-400"
-          value="6"
+          value={data?.length}
           title="Categories"
           subtitle="To explore"
         />

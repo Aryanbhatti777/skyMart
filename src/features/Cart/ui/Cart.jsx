@@ -11,11 +11,13 @@ import {
 import { Link } from "react-router";
 import CartItems from "./CartItems";
 import { useSelector } from "react-redux";
+import { useCart } from "../hooks/cartHook";
 
 const Cart = () => {
 
   const { grandTotal } = useSelector(state => state.cart)
-  console.log(grandTotal)
+  const { clearCart } = useCart()
+ 
   return (
     <main className="min-h-screen bg-[#080808] px-4 py-8 text-white sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
@@ -57,7 +59,9 @@ const Cart = () => {
 
             {/* Clear Cart */}
             <div className="flex justify-end pt-2">
-              <button className="flex items-center gap-2 text-xs font-medium text-zinc-600 transition hover:text-red-400">
+              <button className="flex items-center gap-2 text-xs font-medium text-zinc-600 transition hover:text-red-400"
+              onClick={clearCart}
+              >
                 <Trash2 size={14} />
                 Clear Cart
               </button>
@@ -80,7 +84,7 @@ const Cart = () => {
                 </span>
 
                 <span className="font-medium">
-                  {grandTotal.toFixed(2)}
+                  ${grandTotal.toFixed(2)}
                 </span>
               </div>
 
@@ -104,7 +108,7 @@ const Cart = () => {
               </span>
 
               <span className="text-2xl font-bold">
-                {grandTotal.toFixed(2)}
+                ${grandTotal.toFixed(2)}
               </span>
             </div>
 

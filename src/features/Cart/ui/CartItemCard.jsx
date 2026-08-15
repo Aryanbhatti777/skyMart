@@ -6,7 +6,7 @@ const CartItemCard = ({ item }) => {
 
     const totalPrice = (item.price * item.quantity).toFixed(2)
 
-    const { increaseQuantity, decreaseQuantity } = useCart()
+    const { increaseQuantity, decreaseQuantity, removeItemFromCart } = useCart()
     return (
         <div className="rounded-2xl border border-zinc-800 bg-[#101010] p-4 transition hover:border-violet-500/20 sm:p-5">
             <div className="flex gap-4">
@@ -44,6 +44,7 @@ const CartItemCard = ({ item }) => {
                         <button
                             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-600 transition hover:bg-red-500/10 hover:text-red-400"
                             aria-label="Remove item"
+                            onClick={() => removeItemFromCart(item.id)}
                         >
                             <Trash2 size={16} />
                         </button>
@@ -81,7 +82,7 @@ const CartItemCard = ({ item }) => {
                         {/* Total Price */}
                         <div className="text-right">
                             <p className="text-base font-bold text-white sm:text-lg">
-                                {totalPrice}
+                                ${totalPrice}
                             </p>
 
                             {item.quantity > 1 && (

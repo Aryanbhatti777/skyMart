@@ -31,7 +31,7 @@ const cartSlice = createSlice({
                     return item
                 }
             })
-
+            
             state.grandTotal = state.cartItems.reduce((acc, curr) => {
                 return acc + curr.quantity * curr.price
             }, 0)
@@ -58,10 +58,27 @@ const cartSlice = createSlice({
             }, 0)
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
 
+        },
+        remove: (state, action) => {
+            const updated = state.cartItems.filter((item) => item.id !== action.payload)
+            state.cartItems = updated;
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+            state.cartLength = state.cartItems.length
+            state.grandTotal = state.cartItems.reduce((acc, curr) => {
+                return acc + curr.quantity * curr.price
+            }, 0)
+        },
+        removeAll: (state, action) => {
+            state.cartItems = []
+            localStorage.removeItem("cartItems")
+            state.cartLength = state.cartItems.length
+            state.grandTotal = state.cartItems.reduce((acc, curr) => {
+                return acc + curr.quantity * curr.price
+            }, 0)
         }
 
     }
 })
 
-export const { add, increase, decrease } = cartSlice.actions
+export const { add, increase, decrease, remove, removeAll } = cartSlice.actions
 export default cartSlice.reducer
